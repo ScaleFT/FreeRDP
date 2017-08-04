@@ -82,7 +82,7 @@ set_property(TARGET ${MODULE_NAME} PROPERTY FOLDER "Client/Mac")
 add_custom_command(TARGET ${MODULE_NAME} POST_BUILD
 	COMMAND mkdir ARGS -p ${CMAKE_CURRENT_BINARY_DIR}/$(CONFIGURATION)/${MODULE_OUTPUT_NAME}.app/Contents/Frameworks
 	COMMAND ditto ${CMAKE_CURRENT_BINARY_DIR}/../$(CONFIGURATION)/MacFreeRDP.framework ${CMAKE_CURRENT_BINARY_DIR}/$(CONFIGURATION)/${MODULE_OUTPUT_NAME}.app/Contents/Frameworks/MacFreeRDP.framework
-	COMMAND install_name_tool -change "@executable_path/../Frameworks/MacFreeRDP.framework/Versions/${MAC_OS_X_BUNDLE_BUNDLE_VERSION}/MacFreeRDP"
+	COMMAND install_name_tool -change "${CMAKE_SOURCE_DIR}/client/Mac/MacFreeRDP.framework/Versions/${MACOSX_BUNDLE_BUNDLE_VERSION}/MacFreeRDP"
 		"@executable_path/../Frameworks/MacFreeRDP.framework/Versions/Current/MacFreeRDP"
 		"${CMAKE_CURRENT_BINARY_DIR}/$(CONFIGURATION)/${MODULE_OUTPUT_NAME}.app/Contents/MacOS/${MODULE_NAME}"
 	COMMENT Setting install name for MacFreeRDP)
