@@ -349,8 +349,8 @@ static UINT mac_cliprdr_server_format_data_response(CliprdrClientContext* cliprd
 		
 		data = (void*) ClipboardGetData(mfc->clipboard, formatId, &size);
 		
-		if (size > 1)
-			size--; /* we need the size without the null terminator */
+		//if (size > 1)
+		//	size--; /* we need the size without the null terminator */
 		
 		NSString* str = [[NSString alloc] initWithBytes: (void*) data length:size encoding:NSUTF8StringEncoding];
 		free(data);
