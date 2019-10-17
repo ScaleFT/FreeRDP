@@ -234,7 +234,8 @@ DWORD WINAPI mac_client_thread(void* param)
 
 	disconnect:
 		[view setIs_connected:0];
-		freerdp_disconnect(instance);
+        [NSThread sleepForTimeInterval:3.0f];
+        freerdp_disconnect(instance);
 
 		if (settings->AsyncInput && inputThread)
 		{
@@ -249,7 +250,6 @@ DWORD WINAPI mac_client_thread(void* param)
 
 			CloseHandle(inputThread);
 		}
-
 		ExitThread(0);
 		return 0;
 	}
